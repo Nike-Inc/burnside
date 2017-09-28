@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+  </head>
+  <body>
+    <nav>
+    	<ul>
+    		<li><a class="active" href="#">Home</a></li>
+    		<li><a id="aboutLink" href="about.html">About</a></li>
+    		<li><a href="#">API</a></li>
+    	</ul>
+    </nav>
+    <div id="body">
+      <h1>HTML Ipsum Presents</h1>
+      <button class="real" style="display:none;" id="exampleButton"></button>
+      <input type="text">This needs to be here for the test script to run.</input>
+      <button>Click me</button>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+      <ul>
+        <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+        <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+        <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+        <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+      </ul>
+      <button class="ghost"></button>
+      <div style="display:none;" id="hiddenDiv"></div>
+    </div>
+
+    <script type="text/javascript">
+      setTimeout(function simulatedActivity1() {
+
+        // after timeout, hide our ghost button and show our real button
+        document.querySelector('button.real').style.display = 'block';
+        document.querySelector('button.ghost').style.display = 'none';
+
+        document.getElementById('exampleButton').onclick = (e) => {
+          var div = document.createElement('div');
+          div.id = document.querySelector('input').value;
+          document.getElementById('body').appendChild(div);
+
+          return false;
+        }
+
+        parent.postMessage({ classification: 'foo', id: 1}, '*');
+        var fooBar = document.createElement('div');
+        fooBar.textContent = "fooBarKungFu";
+        fooBar.id = "fooBar";
+        document.getElementById('body').appendChild(fooBar);
+      }, 1);
+
+      setTimeout(function simulatedActivity2() {
+        parent.postMessage({ classification: 'foo'}, '*');
+      }, 10);
+    </script>
+  </body>
+</html>

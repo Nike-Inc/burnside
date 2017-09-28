@@ -1,0 +1,63 @@
+{
+  "name": "burnside-sample",
+  "private": true,
+  "version": "0.3.0",
+  "description": "Sample Project Configured to run Burnside Tests",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/Nike-Inc/burnside.git"
+  },
+  "bin": {
+    "proxy": "lib/cli.js"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rm -rf lib",
+    "babel": "babel src --out-dir lib --source-maps inline",
+    "prepublish": "npm run clean && npm run babel",
+    "check-coverage": "istanbul check-coverage reports/coverage/coverage-final.json",
+    "karma": "karma start && npm run check-coverage",
+    "karma:watch": "karma --auto-watch=true --single-run=false start",
+    "lint:json": "eslint --format json src/**/*.js > eslint.json",
+    "lint": "eslint --color 'src/**/*.js'",
+    "test": "npm run lint && npm run karma"
+  },
+  "author": "Ben Hammond",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "burnside": "~0.3.0",
+    "burnside-localproxy": "~0.3.0",
+    "burnside-dom": "~0.3.0",
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-es5": "^1.0.9",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-react": "^6.6.0",
+    "exports-loader": "^0.6.3",
+    "express": "^4.15.2",
+    "imports-loader": "^0.7.0",
+    "isparta": "^4.0.0",
+    "istanbul-instrumenter-loader": "^1.1.0",
+    "karma": "^1.1.2",
+    "karma-chai": "^0.1.0",
+    "karma-chai-as-promised": "^0.1.2",
+    "karma-coverage": "^1.1.1",
+    "karma-html-reporter": "^0.2.7",
+    "karma-junit-reporter": "^1.0.0",
+    "karma-mocha": "^1",
+    "karma-mocha-reporter": "^2.0.5",
+    "karma-sinon-chai": "^1.2.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^3.2.0",
+    "opener": "^1.4.1",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
+    "webpack": "^1.13.1"
+  }
+}

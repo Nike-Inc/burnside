@@ -1,0 +1,20 @@
+{
+  "name": "burnside-root",
+  "version": "0.3.0",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/Nike-Inc/burnside.git"
+  },
+  "scripts": {
+    "tutorial": "cd packages/burnside-cli && npm run tutorial",
+    "custom-install": "lerna bootstrap",
+    "test": "lerna run test --concurrency 1",
+    "test:dev": "lerna run test",
+    "lint": "lerna run lint",
+    "precustom-publish": "npm run custom-install",
+    "custom-publish": "node publish.js"
+  },
+  "devDependencies": {
+    "lerna": "~2.2.0"
+  }
+}

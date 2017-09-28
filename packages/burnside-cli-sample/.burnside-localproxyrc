@@ -1,0 +1,17 @@
+{
+  "port": 9938,
+  "extensions": [
+    "burnside-dom"
+  ],
+  "request": {
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  },
+  "response": {
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  },
+  "methods": ["GET", "OPTIONS", "POST"]
+}

@@ -1,0 +1,18 @@
+{
+  "extends": "eslint-config-airbnb-es5",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "Promise": false,
+    "BurnsideModules": false
+  },
+  "rules": {
+    "new-cap": "off",
+    "no-param-reassign": "off",
+    "no-eval": "off",
+    "no-shadow": "off"
+  }
+}

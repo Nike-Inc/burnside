@@ -1,0 +1,17 @@
+{
+  "key": "./certs/localhost.privkey.pem",
+  "cert": "./certs/localhost.cert.pem",
+  "port": 9888,
+  "extensions": [
+    "burnside-dom"
+  ],
+  "injects": [
+    "/base/resources/sinon.js"
+  ],
+  "response": {
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  },
+  "methods": ["GET", "OPTIONS", "POST"]
+}

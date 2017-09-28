@@ -1,0 +1,31 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/bhammo/.nvm/versions/node/v6.11.1/bin/node',
+1 verbose cli   '/Users/bhammo/.nvm/versions/node/v6.11.1/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'check-coverage' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.1
+4 verbose run-script [ 'precheck-coverage', 'check-coverage', 'postcheck-coverage' ]
+5 info lifecycle burnside@0.3.0~precheck-coverage: burnside@0.3.0
+6 silly lifecycle burnside@0.3.0~precheck-coverage: no script for precheck-coverage, continuing
+7 info lifecycle burnside@0.3.0~check-coverage: burnside@0.3.0
+8 verbose lifecycle burnside@0.3.0~check-coverage: unsafe-perm in lifecycle true
+9 verbose lifecycle burnside@0.3.0~check-coverage: PATH: /Users/bhammo/.nvm/versions/node/v6.11.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/burnside/node_modules/.bin:/Users/bhammo/.nvm/versions/node/v6.11.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/burnside/node_modules/.bin:/Users/bhammo/.nvm/versions/node/v6.11.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/burnside/node_modules/.bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/burnside/node_modules/.bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/node_modules/.bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/node_modules/.bin:/Users/bhammo/Documents/playroom/personal_repos/node_modules/.bin:/Users/bhammo/Documents/playroom/node_modules/.bin:/Users/bhammo/Documents/node_modules/.bin:/Users/bhammo/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/bhammo/.nvm/versions/node/v6.11.1/bin:/Users/bhammo/.nvm/versions/node/v6.11.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/bhammo/Documents/playroom/personal_repos/burnside_personal/node_modules/.bin:/Users/bhammo/.nvm/versions/node/v6.11.1/bin:/Users/bhammo/.sdkman/candidates/groovy/current/bin:/Users/bhammo/.sdkman/candidates/gradle/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle burnside@0.3.0~check-coverage: CWD: /Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/burnside
+11 silly lifecycle burnside@0.3.0~check-coverage: Args: [ '-c',
+11 silly lifecycle   'istanbul check-coverage reports/coverage/coverage-final.json' ]
+12 verbose stack Error: write EPIPE
+12 verbose stack     at exports._errnoException (util.js:1018:11)
+12 verbose stack     at WriteWrap.afterWrite (net.js:800:14)
+13 verbose cwd /Users/bhammo/Documents/playroom/personal_repos/burnside_personal/packages/burnside
+14 error Darwin 15.6.0
+15 error argv "/Users/bhammo/.nvm/versions/node/v6.11.1/bin/node" "/Users/bhammo/.nvm/versions/node/v6.11.1/bin/npm" "run" "check-coverage"
+16 error node v6.11.1
+17 error npm  v3.10.10
+18 error code EPIPE
+19 error errno EPIPE
+20 error syscall write
+21 error write EPIPE
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]

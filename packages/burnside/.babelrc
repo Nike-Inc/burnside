@@ -1,0 +1,13 @@
+{
+    "ignore": [
+        "src/index.test.js",
+        "src/**/*.test.js"
+    ],
+    "presets": [
+        ["env", {
+            "targets": {
+            "browsers": ["last 2 versions", "ie >= 9"]
+            }
+        }]
+    ]
+}

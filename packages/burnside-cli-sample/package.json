@@ -1,0 +1,30 @@
+{
+  "name": "burnside-cli-sample",
+  "private": true,
+  "version": "0.3.0",
+  "description": "Sample Project Configured to run Burnside Tests with Burnside-CLI",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/Nike-Inc/burnside.git"
+  },
+  "scripts": {
+    "prepublish": "echo 'nothing to see here'",
+    "burnside": "burnside ./src/index.test.js",
+    "burnside:watch": "burnside ./src/index.test.js --watchmode",
+    "lint:json": "eslint --format json src/**/*.js > eslint.json",
+    "lint": "eslint --color 'src/**/*.js'",
+    "test": "npm run lint && npm run burnside"
+  },
+  "author": "Ben Hammond",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "burnside-cli": "~0.3.0",
+    "babel-eslint": "^7.2.3",
+    "chai": "^4.0.2",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-es5": "^1.0.9",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-react": "^6.6.0"
+  }
+}

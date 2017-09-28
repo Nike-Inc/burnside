@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Entering: Burnside Tutorial</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="css/zenburn.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2 id="titleHeader">Welcome to the Burnside Tutorial</h2>
+          <p>Please use all four arrows in the lower right hand corner to navigate.</p>
+          <span class="fragment">
+            <span>This tutorial is designed to educate and train you on the
+              <span class="orange">Installation,</span> <span class="orange">Configuration,</span>
+              and <span class="orange">Usage</span> of Burnside as an E2E testing tool through a series of examples and exercises.</span>
+            </span>
+          </span>
+        </section>
+        <section>
+          <section>
+            <h2>What is <span class="orange">Burnside</span>?</h2>
+            <p><span class="orange">Burnside</span> is an End-To-End (e2e) testing tool. It runs test javascript in realtime inside any website using iframes and gumption.</p>
+            <p>Burnside also includes an optional local <span class="orange">proxy</span> and a <span class="orange">CLI</span> to bundle it all up with Karma and Webpack for you.</p>
+            <p>More info down below</p>
+            <img onclick="document.querySelector('.navigate-down').click()" style="width:100px;background:none;border:none;margin:0;box-shadow:none;" src="css/arrow-down.png" alt="down">
+          </section>
+          <section>
+            <h2>Burnside: How it works</h2>
+						<div>
+              <p><span class="orange">Burnside</span>'s optional <span class="orange">CLI</span> handles the complexity of configuring <span class="orange">Babel</span>, <span class="orange">Webpack</span>, <span class="orange">Karma</span>, and <span class="orange">Mocha</span> alongside your test file.</p>
+              <p class="fragment">Karma is configured to automatically start Burnside's local <span class="orange">proxy</span> which loads Burnside's <span class="orange">client</span> into your page.</p>
+              <p class="fragment">Your Mocha tests then create new instances of Burnside which loads your page inside an <span class="orange">iframe</span>,</p>
+              <p class="fragment">and then runs javascript functions created via <span class="orange">extensions</span></p>
+              <p class="fragment">which then have full access to all <span class="orange">DOM</span> and <span class="orange">JS</span> APIs running within your page.</p>
+            </div>
+          </section>
+          <section>
+            <h2>How this tutorial works</h2>
+						<div>
+              <p>This tutorial is actually just a simple Burnside test running with a <strong>long</strong> timeout.</p>
+              <p class="fragment">Burnside has been configured to keep the iframe alive while you walk through these slides and Mocha tests have been added to give you credit for completing the exercises.</p>
+            </div>
+          </section>
+          <section>
+            <h2>How its tested</h2>
+              <p><span class="orange">Burnside</span> tests itself with <span class="orange">Burnside</span> using mock HTML pages.</p>
+              <pre><code id="b1-2" contenteditable>
+it('should wait and then retrieve the HTML of the selector', () => {
+  return burnside.getHTML('#body')
+    .should.eventually.contain('<h1>HTML Ipsum Presents</h1>');
+});</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+          <p>Before we start using Burnside, this is how you'd <span class="orange">install</span> it.</p>
+          <code style="background:black;" class="">$ npm install --save-dev burnside-cli</code>
+          <p class="fragment">Then, in your test file</p>
+          <p class="fragment"><code style="background:black;" class="">const {Burnside} = window;</code></p>
+          <p class="fragment">and you're ready to test!</p>
+          <p class="fragment">For more information visit our <a href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/packages/burnside-cli-sample">CLI Sample Configuration Package</a></p>
+          </section>
+          <section>
+            <h2 id="titleHeader">Configuration and Use</h2>
+            <p>Now that you have a test file with <code style="background:black;">const Burnside</code> defined its time to configure and use it.</p>
+            <pre><code style="background:black;" class="">
+  Burnside.configure({
+    timeout: 99999,
+    host: 'http://localhost:3000',
+    path: '/base/resources/index.html'
+  })
+  const burnside = new Burnside(/* {options} || '/path/' */);
+  </code></pre>
+        </section>
+      </section>
+        <section>
+          <h2>About This Test-Driven Workshop (TDW)</h2>
+          <p>You're about to be presented with a series of example tests configured to fail.</p>
+          <p class="fragment">Your job is to edit the code within the example test and then click</p>
+          <p class="fragment"><button class="btn">Run</button></p>
+          <p class="fragment">until your script returns a string value that matches the</p>
+          <p class="fragment"><code style="background:black">expectedValue</code></p>
+        </section>
+        <section>
+  <h3>Let's begin by walking through Burnside's API</h3>
+</section>
+<section>
+  <p>The backbone of Burnside's API is <code style="background:black">exec(args, fn, timeout)</code>
+  <p>exec invokes <span class="orange">fn</span> with <span class="orange">args</span>.
+  <p>Burnside will resolve a <span class="orange">Promise</span> or a <span class="orange">Primitive</span>.</p>
+  <pre><code id="b1" contenteditable style="background:black;">
+const dynamicId = 'exampleButton'; // can be pulled from another source, e.g. constants
+const attribute = 'value';
+
+burnside.exec([dynamicId, attribute], (id, attr) => {
+  return Promise.resolve(document.getElementById(id).dataset);
+}, /*timeout*/);
+
+// expectedOutput === 'foo'
+
+/* HTML Snippet
+<button id="exampleButton" data-value='foo'></button>
+*/
+</code></pre>
+          <button class="btn run" data-editor="b1" data-output="foo" data-outputId="o1" data-wait=0>Run</button>
+          Results:&nbsp;<span style="max-width:200px;" id="o1"></span>
+          <p>Expected output: <code style="background:black">foo</code></p>
+          <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
+        </section>
+        <section>
+          <p><span class="orange">wait(args, fn, match, timeout, interval)</span> lets you assert any future state.</p>
+          <p>wait invokes <span class="orange">fn</span> with <span class="orange">args</span> and checks for the result to equal <span class="orange">match</span> within the <span class="orange">timeout</span> on the <span class="orange">interval</span>
+<pre><code id="b2" contenteditable style="background:black;">
+
+burnside.wait([], () => {
+  return window.foo;
+}, 'success', 100, 20);
+
+// expectedOutput === 'success'
+
+/* Relevant JS
+setTimeout(function simulatedActivity() {
+  window._rendered = 'success';
+}, 50);
+*/
+</code></pre>
+          <button class="btn run" data-editor="b2" data-output="success" data-outputId="o2" data-wait=0>Run</button>
+          Results:&nbsp;<span style="max-width:200px;" id="o2"></span>
+          <p>Expected output: <code style="background:black">success</code></p>
+          <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
+
+      </section>
+      <section>
+
+        <p><span class="orange">Burnside</span> follows a fluent chaining syntax that allows you to string together multiple commands into a single test.</p>
+    <pre><code id="ba" contenteditable style="background:black;">
+    const selector = '#exampleButton';
+
+    burnside
+      .exec([selector], (sel, cl) => {
+        document.querySelector(sel).classList.add('bar');
+      })
+      .exists(selector + '.foo');
+
+    // expectedOutput === '{}'
+
+    /* Relevant HTML
+    <button id="exampleButton" class="example" data-value='foo'></button>
+    */
+    </code></pre>
+        <button class="btn run" data-editor="ba" data-output='{}' data-outputId="oa" data-wait=0>Run</button>
+        Results:&nbsp;<span style="max-width:200px;" id="oa"></span>
+        <p>Expected output: <code style="background:black">{}</code></p>
+        <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
+
+    </section>
+  <section>
+    <p><span class="orange">use(fn, name)</span> extends Burnside with new functionality.</p>
+    <p>use adds <span class="orange">fn</span> to Burnside, either using its <span class="orange">fn.name</span> or the optional <span class="orange">name</span></p>
+<pre><code id="b3" contenteditable style="background:black;">
+
+burnside.use(function addClass(selector, classStr) {
+this
+  .waitForElement(selector)
+  .exec([selector], (sel, cl) => {
+    document.querySelector(sel).classList.add('foo');
+  });
+});
+
+burnside
+  .addClass('#exampleButton', 'blueberry')
+  .countElements('button.blueberry');
+
+// expectedOutput === '1'
+
+/* Relevant HTML
+<button id="exampleButton" class="example" data-value='foo'></button>
+*/
+</code></pre>
+    <button class="btn run" data-editor="b3" data-output=1 data-outputId="o3" data-wait=0>Run</button>
+    Results:&nbsp;<span style="max-width:200px;" id="o3"></span>
+    <p>Expected output: <code style="background:black">1</code></p>
+    <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
+
+</section>
+<section>
+  <p><span class="orange">value(fn)</span> returns the most recent result to the test frame by invoking <span class="orange">fn(value)</span>.</p>
+  <p>value allows the test <span class="orange">fn</span> to inspect the most recently returned value</p>
+<pre><code id="b4" contenteditable style="background:black;">
+
+burnside
+  .exec([], () => ['red', 'white'])
+  .value(result => {
+    return result.indexOf('blue');
+  });
+
+  // expectedOutput === 2
+
+</code></pre>
+  <button class="btn run" data-editor="b4" data-output=2 data-outputId="o4" data-wait=0>Run</button>
+  Results:&nbsp;<span style="max-width:200px;" id="o4"></span>
+  <p>Expected output: <code style="background:black">2</code></p>
+  <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
+
+</section>
+<section>
+<p><span class="orange">Burnside</span> includes an asynchronous DOM API that waits for the document to catch up to your selector.</p>
+
+<pre><code id="b5" contenteditable style="background:black;">
+
+// this code will wait until 'a.active' exists and then return the foo attribute
+burnside.getAttribute('a.active', 'foo');
+
+// expectedOutput === 'http://www.nike.com/us/en_us/'
+
+/* HTML Snippet
+<a class="active" href="http://www.nike.com/us/en_us/">Home</a>
+*/
+</code></pre>
+          <button class="btn run" data-editor="b5" data-output="http://www.nike.com/us/en_us/" data-outputId="o5" data-wait=0>Run</button>
+          Results:&nbsp;<span style="max-width:200px;" id="o5"></span>
+          <p>Expected output: <code style="background:black">http://www.nike.com/us/en_us/</code></p>
+          <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
+</section>
+      <section>
+<h3>Some Final Notes:</h3>
+<p><span class="orange">Burnside:</span></p>
+<p>exposes a <span class="orange">then</span> function for a promise-based API that runs commands in a sequence.</p>
+<p class="fragment">is a modular set of libraries that can configured and used individually instead of invoked through the CLI.</p>
+<p class="fragment">includes a proxy which can be configured to inject or remove custom headers when making HTTP requests or on their return trip.</p>
+<p class="fragment"><strong>loves</strong> Pull Requests for new features!</p>
+      </section>
+      <section>
+<h3>Thank you for completing this workshop!</h3>
+<button class="btn" onclick='event.target.classList.add("close_tutorial");'>Close</button>
+      </section>
+      </div>
+    </div>
+    <script src="js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        parallaxBackgroundImage: 'css/reveal-parallax-1.jpg',
+        parallaxBackgroundSize: '2100px 1400px',
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
