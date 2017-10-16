@@ -18,3 +18,4 @@ yarn.lock
 npm-debug.log
 conf.tmp.js
 .git-credentials
+.npmrc
