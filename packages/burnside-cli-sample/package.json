@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "burnside-cli": "~0.3.0",
+    "burnside-cli": "~0.3.1",
     "babel-eslint": "^7.2.3",
     "chai": "^4.0.2",
     "eslint": "^3.9.1",

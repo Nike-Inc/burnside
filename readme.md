@@ -18,23 +18,29 @@ npm run tutorial
 $ npm install --save-dev burnside-cli
 ```
 
-<a name="configuration"></a>
-### Configuration
-In your `package.json` scripts:
+<a name="usage"></a>
+### Usage
 ```JSON
 {
   "scripts": {
-    "burnside": "burnside ./path/to/tests.js"
+    "burnside": "burnside ./path/to/tests.js --startup='./exampleServer.sh' --condition='start' --wait=5000 --browsers=chrome,firefox"
   }
 }  
 ```
 
+| Option | Example | Purpose |
+| ------ | ------- | ------- |
+| `<default>` | `./path/to/tests.js` | Your Test File |
+| `startup` | `--startup='./exampleServer.sh'` | A BASH Command representing your application's startup command |
+| `condition` | `--condition='startup'` | An _optional_ startup message for Burnside to wait on |
+| `wait` | `--wait=500` | The amount of time Burnside will wait for the `startup` `condition` to be reached, if specified. Defaults to 5000 |
+| `browsers` | `--browsers=chrome,firefox` | The browsers Burnside should attempt to use when testing. Available: `chrome` and `firefox` |
+
 Burnside is a modular ecosystem based on a core that runs inside of a Browser. The CLI bundles Karma and Webpack to load your tests within Chrome, but you can use Burnside's core with any Test Runner you'd like to set up.
-> If you'd like to configure your own test runner, we've included a Sample project configured to use Karma and Webpack directly.
+> If you'd like to configure your own test runner, we've included the `packages/burnside-sample` project configured to use Karma and Webpack directly.
 
 <a name="basic-usage"></a>
-### Basic usage
-
+### Test usage
 ```js
 const Burnside = window.Burnside; // or `import Burnside` if you're not using the CLI
 

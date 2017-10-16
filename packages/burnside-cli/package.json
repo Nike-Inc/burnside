@@ -1,6 +1,6 @@
 {
   "name": "burnside-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Burnside CLI based on Karma and Webpack",
   "repository": {
     "type": "github",
@@ -16,9 +16,10 @@
   "scripts": {
     "prepublish": "echo 'no build step needed'",
     "tutorial": "node src/cli.js ./src/tutorial.js --disableTimeout",
-    "burnside": "node src/cli.js ./src/index.test.js -b chrome,firefox",
+    "burnside:failures": "./runBurnsideFailureTests.sh ",
+    "burnside": "node src/cli.js ./src/index.test.js --startup=./exampleServer.sh --verbose --condition='Startup Complete' --wait=2000 --browsers=chrome,firefox",
     "lint": "eslint --color 'src/**/*.js'",
-    "test": "npm run lint && npm run burnside"
+    "test": "npm run lint && npm run burnside && npm run burnside:failures"
   },
   "author": "Ben Hammond",
   "license": "ISC",
@@ -38,6 +39,7 @@
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.3",
     "mocha": "^3.4.2",
+    "ps-tree": "^1.1.0",
     "webpack": "^2.6.1",
     "yargs": "^8.0.1"
   },
