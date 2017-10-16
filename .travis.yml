@@ -7,3 +7,4 @@ before_script:
   - npm run custom-install
 addons:
   chrome: stable
+  firefox: "49.0"
