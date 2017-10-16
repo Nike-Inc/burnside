@@ -1,6 +1,6 @@
 {
   "name": "burnside-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Burnside CLI based on Karma and Webpack",
   "repository": {
     "type": "github",
