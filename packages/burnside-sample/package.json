@@ -12,7 +12,7 @@
     "burnside": "burnside ./src/index.test.js",
     "burnside:watch": "FOO=bar burnside ./src/index.test.js --watchmode --karmaConfig=./burnside.karma.conf.js",
     "lint:json": "eslint --format json src/**/*.js > eslint.json",
-    "lint": "eslint --color --format node_modules/@nike/eslint-multi-formatter/ 'src/**/*.js'",
+    "lint": "eslint --color 'src/**/*.js'",
     "test": "npm run lint && npm run burnside"
   },
   "author": "Ben Hammond",

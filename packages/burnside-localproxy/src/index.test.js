@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
-const {Burnside, constants} = require('@nike/burnside');
-const burnsideDOM = require('@nike/burnside-dom');
+const {Burnside, constants} = require('burnside');
+const burnsideDOM = require('burnside-dom');
 
 chai.use(chaiAsPromised);
 chai.should();

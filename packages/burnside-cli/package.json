@@ -19,7 +19,7 @@
     "burnside:failures": "./runBurnsideFailureTests.sh ",
     "burnside": "node src/cli.js ./src/index.test.js --startup=./exampleServer.sh --verbose --condition='Startup Complete' --wait=2000 --browsers=chrome,firefox",
     "burnside:watch": "node src/cli.js ./src/index.test.js --watchmode --startup=./exampleServer.sh --verbose --condition='Startup Complete' --wait=2000 --browsers=chrome,firefox",
-    "lint": "eslint --color --format node_modules/@nike/eslint-multi-formatter/ 'src/**/*.js'",
+    "lint": "eslint --color 'src/**/*.js'",
     "test": "npm run lint && npm run burnside && npm run burnside:failures"
   },
   "author": "Ben Hammond",

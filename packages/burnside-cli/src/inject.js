@@ -1,5 +1,5 @@
-import {Burnside} from '@nike/burnside';
-import BurnsideDOM from '@nike/burnside-dom';
+import {Burnside} from 'burnside';
+import BurnsideDOM from 'burnside-dom';
 
 Burnside.configure({
   injectClient: false,

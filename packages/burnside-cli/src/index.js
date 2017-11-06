@@ -1,7 +1,6 @@
 var c = require('./constants');
 var runKarma = require('./karmaRunner.js');
 var runWebpack = require('./webpackRunner.js');
-var log = require('@nike/timberline').log;
 
 module.exports = function main(args) {
   const files = args._;
@@ -26,8 +25,6 @@ module.exports = function main(args) {
   if (args.h || args.help) {
     console.log(c.helpMessage); // eslint-disable-line
   }
-
-  log('Burnside-CLI', {sourceModule: '@nike/burnside-cli'});
 
   return runWebpack(c.webpackPath, files, options)
     .then(function webpackResults(bundle) {

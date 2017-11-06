@@ -1,6 +1,4 @@
-import {Client} from '@nike/burnside';
-import {Timberline} from '@nike/timberline';
-import readPkg from 'read-pkg';
+import {Client} from 'burnside';
 import hoxy from 'hoxy';
 import fs from 'fs';
 import path from 'path';
@@ -12,7 +10,7 @@ const headRgx = /<head[^\>]*>/;
 
 let burnsideDOM;
 try {
-  burnsideDOM = require.resolve('@nike/burnside-dom');
+  burnsideDOM = require.resolve('burnside-dom');
 } catch (e) {
   // ignore errors
 }
@@ -34,7 +32,6 @@ export default function startProxy(args, karmaConf, logger) {
     .then(function processBurnsideConfig(options) {
       var log = logger.create('Burnside Localproxy');
       log.debug('Configuration:', options);
-      logToTimberline();
       writePAC(options);
       init(options, log);
 
@@ -147,17 +144,4 @@ function init(opts, log) {
       return;
     }
   });
-}
-
-function logToTimberline() {
-  let pkg;
-  try {
-    pkg = require('../package.json');
-  } catch (e) {
-    // squelch errors - probably missing file
-  } finally {
-    readPkg().then(parentPkg => {
-      (new Timberline({pkg, parentPkg})).log('info', packageName);
-    });
-  }
 }
