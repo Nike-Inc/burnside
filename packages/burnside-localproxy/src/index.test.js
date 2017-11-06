@@ -1,15 +1,11 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
-const Burnside = require('burnside').Burnside;
-const constants = require('burnside').constants;
-
-const burnsideDOM = require('burnside-dom');
+const {Burnside, constants} = require('@nike/burnside');
+const burnsideDOM = require('@nike/burnside-dom');
 
 chai.use(chaiAsPromised);
 chai.should();
 const expect = chai.expect;
-
-const h1HTML = 'HTML Ipsum Presents';
 
 Burnside.configure({
   injectClient: false,
@@ -24,7 +20,7 @@ describe('The Burnside Proxy', function burnsideProxy() {
       path: '/base/resources/index.html'
     }).exec(['h1'], function execExample(selector) {
       return document.querySelector(selector).innerHTML;
-    }).should.eventually.equal(h1HTML);
+    }).should.eventually.equal('HTML Ipsum Presents');
   });
 
   it('should enable a Burnside test against a fragment', function localhostTest() {
@@ -33,14 +29,14 @@ describe('The Burnside Proxy', function burnsideProxy() {
       path: '/base/resources/fragment.html'
     }).exec(['h1'], function execExample(selector) {
       return document.querySelector(selector).innerHTML;
-    }).should.eventually.equal(h1HTML);
+    }).should.eventually.equal('HTML Ipsum Presents');
   });
 
   it('should enable a Burnside test with the Burnside DOM Extensions available', function remoteHostTest() {
     return new Burnside({
       host: 'http://localhost:' + window.location.port,
       path: '/base/resources/index.html'
-    }).getHTML('h1').should.eventually.deep.equal(h1HTML);
+    }).getHTML('h1').should.eventually.deep.equal('HTML Ipsum Presents');
   });
 
   it('should fail when loading a missing host', function missingHostTest() {

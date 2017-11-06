@@ -1,16 +1,26 @@
-import {Client} from 'burnside';
+import {Client} from '@nike/burnside';
+import {Timberline} from '@nike/timberline';
+import readPkg from 'read-pkg';
 import hoxy from 'hoxy';
 import fs from 'fs';
+import path from 'path';
 import cc from 'cosmiconfig';
-import {packageName, PACPath, certPath} from '../constants.js';
 
+import {packageName, PACPath, certPath, swooshPath} from '../constants.js';
 const startMsg = 'Proxy Started';
 const headRgx = /<head[^\>]*>/;
-const burnsideDOM = require.resolve('burnside-dom');
+
+let burnsideDOM;
+try {
+  burnsideDOM = require.resolve('@nike/burnside-dom');
+} catch (e) {
+  // ignore errors
+}
 
 const defaultOptions = {
   key: certPath + '/localhost.privkey.pem',
   cert: certPath + '/localhost.cert.pem',
+  replaceImages: false,
   injects: [],
   extensions: [burnsideDOM],
   request: {},
@@ -24,6 +34,7 @@ export default function startProxy(args, karmaConf, logger) {
     .then(function processBurnsideConfig(options) {
       var log = logger.create('Burnside Localproxy');
       log.debug('Configuration:', options);
+      logToTimberline();
       writePAC(options);
       init(options, log);
 
@@ -72,31 +83,39 @@ function init(opts, log) {
 
   // wrap up the configured values with the Client for injection
   const clientStr = Client.wrapClient(opts.injects, modules);
+  var imageBinary;
+  if (opts.replaceImages) {
+    const fp = opts.replaceImages === true ? swooshPath : path.resolve(opts.replaceImages);
+    imageBinary = fs.readFileSync(fp);
+  }
 
   // start up our proxy server
   const proxy = hoxy.createServer(opts).listen(opts.port);
 
-  // spoof the referrer on the request phase
+  // intercept outbound requests for setting request headers and optionally replace images for faster testing
   proxy.intercept({
     phase: 'request',
     method: (value) => {
       return opts.methods.includes(value);
     },
-    as: 'string'
-  }, function listen(req) {
+    as: 'buffer'
+  }, function listen(req, resp) {
     const requestHeaders = opts.request.headers || {};
 
-    Object
-      .keys(requestHeaders)
-      .forEach(name => {
-        req.headers[name] = requestHeaders[name];
-      });
+    // if the replaceImages flag has been set, test the request url for an image pattern and populate the response immediately
+    if (opts.replaceImages && /(jpg|jpeg|png)/.test(req.url)) {
+      // More information on Hoxy response population: https://greim.github.io/hoxy/#response-population
+      resp.buffer = imageBinary;
+      return;
+    }
+
+    Object.assign(req.headers, requestHeaders);
   });
 
   // clean CORS headers and inject the wrapped Client during the response phase
   proxy.intercept({
     phase: 'response',
-    mimetype: /(text)/,
+    mimeType: /(text)/,
     method: (value) => {
       return opts.methods.includes(value);
     },
@@ -128,4 +147,17 @@ function init(opts, log) {
       return;
     }
   });
+}
+
+function logToTimberline() {
+  let pkg;
+  try {
+    pkg = require('../package.json');
+  } catch (e) {
+    // squelch errors - probably missing file
+  } finally {
+    readPkg().then(parentPkg => {
+      (new Timberline({pkg, parentPkg})).log('info', packageName);
+    });
+  }
 }

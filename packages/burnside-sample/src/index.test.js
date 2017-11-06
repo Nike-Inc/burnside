@@ -1,22 +1,19 @@
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-const Burnside = require('burnside').Burnside;
-const burnsideDOM = require('burnside-dom');
-
-chai.use(chaiAsPromised);
-chai.should();
+import {expect} from 'chai';
+const {Burnside} = window;
 
 Burnside.configure({
-  injectClient: false,
-  extensions: [burnsideDOM],
-  timeout: 20000
+  timeout: 2000
 });
 
-describe('The Burnside Sample Project Test', function burnsideProxy() {
+describe('The Burnside Sample CLI Sample Test', function burnsideProxy() {
   it('should enable a Burnside test with the Burnside-DOM function waitForElement against any website', function remoteHostTest() {
     return new Burnside({
-      host: 'http://localhost:5678',
-      path: '/example/'
-    }).waitForElement('body');
+      host: 'http://localhost:' + window.location.port,
+      path: '/base/resources/index.html'
+    })
+      .getText('h1')
+      .then(value => {
+        expect(value).to.equal('Hello CLI!');
+      });
   });
 });

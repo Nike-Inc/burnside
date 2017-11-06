@@ -2,6 +2,7 @@
   "key": "./certs/localhost.privkey.pem",
   "cert": "./certs/localhost.cert.pem",
   "port": 9888,
+  "replaceImages": true, 
   "extensions": [
     "burnside-dom"
   ],

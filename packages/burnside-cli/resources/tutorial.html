@@ -63,7 +63,7 @@ it('should wait and then retrieve the HTML of the selector', () => {
         <section>
           <section>
           <p>Before we start using Burnside, this is how you'd <span class="orange">install</span> it.</p>
-          <code style="background:black;" class="">$ npm install --save-dev burnside-cli</code>
+          <code style="background:black;" class="">$ npm install --save-dev @nike/burnside-cli</code>
           <p class="fragment">Then, in your test file</p>
           <p class="fragment"><code style="background:black;" class="">const {Burnside} = window;</code></p>
           <p class="fragment">and you're ready to test!</p>
@@ -94,6 +94,7 @@ it('should wait and then retrieve the HTML of the selector', () => {
   <h3>Let's begin by walking through Burnside's API</h3>
 </section>
 <section>
+  <p><a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">View Burnside API Documentation</a></p>
   <p>The backbone of Burnside's API is <code style="background:black">exec(args, fn, timeout)</code>
   <p>exec invokes <span class="orange">fn</span> with <span class="orange">args</span>.
   <p>Burnside will resolve a <span class="orange">Promise</span> or a <span class="orange">Primitive</span>.</p>
@@ -117,6 +118,7 @@ burnside.exec([dynamicId, attribute], (id, attr) => {
           <p><a target='_blank' href="http://localhost:9876/base/resources/index.html">View the Test HTML</a></p>
         </section>
         <section>
+          <p><a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">View Burnside API Documentation</a></p>
           <p><span class="orange">wait(args, fn, match, timeout, interval)</span> lets you assert any future state.</p>
           <p>wait invokes <span class="orange">fn</span> with <span class="orange">args</span> and checks for the result to equal <span class="orange">match</span> within the <span class="orange">timeout</span> on the <span class="orange">interval</span>
 <pre><code id="b2" contenteditable style="background:black;">
@@ -141,6 +143,7 @@ setTimeout(function simulatedActivity() {
       </section>
       <section>
 
+        <p><a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">View Burnside API Documentation</a></p>
         <p><span class="orange">Burnside</span> follows a fluent chaining syntax that allows you to string together multiple commands into a single test.</p>
     <pre><code id="ba" contenteditable style="background:black;">
     const selector = '#exampleButton';
@@ -164,6 +167,7 @@ setTimeout(function simulatedActivity() {
 
     </section>
   <section>
+  <p><a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">View Burnside API Documentation</a></p>
     <p><span class="orange">use(fn, name)</span> extends Burnside with new functionality.</p>
     <p>use adds <span class="orange">fn</span> to Burnside, either using its <span class="orange">fn.name</span> or the optional <span class="orange">name</span></p>
 <pre><code id="b3" contenteditable style="background:black;">
@@ -193,6 +197,7 @@ burnside
 
 </section>
 <section>
+<p><a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">View Burnside API Documentation</a></p>
   <p><span class="orange">value(fn)</span> returns the most recent result to the test frame by invoking <span class="orange">fn(value)</span>.</p>
   <p>value allows the test <span class="orange">fn</span> to inspect the most recently returned value</p>
 <pre><code id="b4" contenteditable style="background:black;">
@@ -213,7 +218,8 @@ burnside
 
 </section>
 <section>
-<p><span class="orange">Burnside</span> includes an asynchronous DOM API that waits for the document to catch up to your selector.</p>
+<p><a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">View Burnside API Documentation</a></p>
+<p><span class="orange">Burnside</span> includes an <a target='_blank' href="https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/api.md">asynchronous DOM API</a> that waits for the document to catch up to your selector.</p>
 
 <pre><code id="b5" contenteditable style="background:black;">
 

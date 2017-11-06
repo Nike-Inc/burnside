@@ -1,6 +1,6 @@
 {
   "name": "burnside-localproxy",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "Node HTTP Proxy that injects the Burnside Client",
   "repository": {
     "type": "github",

@@ -3,6 +3,14 @@ Details on how to contribute to this changelog see the website
 [Keep a change Log.](http://keepachangelog.com/) All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.2]
+### Changed
+- Replaces Nike images with a kitten
+
+## [0.3.1]
+### Added
+- Adds support for the new `replaceImages` option for replacing images at test time.
+
 ## [0.3.0]
 ### Initial Release
 - Bumping minor version to match Core's bump

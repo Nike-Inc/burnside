@@ -6,6 +6,7 @@ const argv = require('yargs')
   .alias('t', 'timeout')
   .alias('s', 'startup')
   .alias('c', 'condition')
+  .alias('k', 'karmaConfig')
   .argv;
 
 const main = require('./index.js');

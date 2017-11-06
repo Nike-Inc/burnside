@@ -3,6 +3,10 @@ Details on how to contribute to this changelog see the website
 [Keep a change Log.](http://keepachangelog.com/) All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.2]
+### Added
+Support for custom karma configurations and sample usage.
+
 ## [0.3.1]
 ### Added
 Support for the `startup`, `condition`, and `wait` parameters to support running a child process during testing.
