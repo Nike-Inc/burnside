@@ -4,6 +4,7 @@ module.exports = function karmaConfig(config) {
       require('burnside-localproxy'),
       'karma-*'
     ],
+    logLevel: config.LOG_DEBUG,
     frameworks: ['mocha', 'burnside-localproxy'],
     singleRun: true, // just run once by default
     basePath: process.cwd(),
