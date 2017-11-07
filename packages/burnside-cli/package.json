@@ -1,7 +1,7 @@
 {
   "name": "burnside-cli",
-  "version": "0.3.2",
-  "description": "Burnside CLI based on Karma and Webpack",
+  "version": "0.3.3",
+  "description": "End To End Web Testing with no dependencies built on pure Node. CLI",
   "repository": {
     "type": "github",
     "url": "https://github.com/Nike-Inc/burnside.git"

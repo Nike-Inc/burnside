@@ -1,7 +1,7 @@
 {
   "name": "burnside-dom",
-  "version": "0.3.1",
-  "description": "",
+  "version": "0.3.2",
+  "description": "DOM Extensions for Burnside's Clientside Testing Library",
   "repository": {
     "type": "bitbucket",
     "url": "https://bitbucket.nike.com/scm/webcd/burnside.git"

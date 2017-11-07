@@ -1,7 +1,7 @@
 {
   "name": "burnside",
-  "version": "0.3.0",
-  "description": "",
+  "version": "0.3.1",
+  "description": "Fast and Reliable E2E Web Testing. Core Clientside Library.",
   "repository": {
     "type": "github",
     "url": "https://github.com/Nike-Inc/burnside.git"
