@@ -1,7 +1,7 @@
 {
   "name": "burnside",
-  "version": "0.3.0",
-  "description": "",
+  "version": "0.3.1",
+  "description": "End To End Web Testing with no dependencies built on pure Node. Core Clientside Library.",
   "repository": {
     "type": "github",
     "url": "https://github.com/Nike-Inc/burnside.git"
