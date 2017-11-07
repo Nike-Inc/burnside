@@ -121,4 +121,4 @@ Now you're all configured! If you'd like to contribute to the Tutorial, please r
 
 ## License
 
-[Apache 2.0](LICENSE)
+[LICENSE](LICENSE)
