@@ -117,7 +117,7 @@ cd burnside
 npm install && npm run custom-install
 npm run tutorial
 ```
-Now you're all configured! If you'd like to contribute to the Tutorial, please read our [Tutorial Developers Guide](https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/tutorial.md)
+Now you're all configured! If you'd like to contribute to the Tutorial, please read our [Tutorial Developers Guide](https://github.com/Nike-Inc/burnside/blob/master/docs/tutorial.md)
 
 ## License
 
