@@ -37,7 +37,7 @@ const start = (startup, condition, timeout) => {
       return main(argv).then(function karmaExitCode() {
         log('Attempting to Safely Kill Startup Process');
         try {
-          return server.safeKill();
+          return server.safeKill().then(process.exit.bind(this, [0]));
         } finally { } // eslint-disable-line
       });
     }).catch(err => {
