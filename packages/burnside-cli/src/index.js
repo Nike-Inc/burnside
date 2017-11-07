@@ -5,6 +5,7 @@ var runWebpack = require('./webpackRunner.js');
 module.exports = function main(args) {
   const files = args._;
   const watchmode = args.watchmode;
+  const karmaConfig = args.karmaConfig || false;
   const browserOpts = args.browsers || c.defaultBrowsers;
   const timeout = Boolean(args.timeout) && args.timeout > 0 ? args.timeout : c.defaultTimeout;
 
@@ -13,6 +14,7 @@ module.exports = function main(args) {
     browsers: parseBrowsers(browserOpts),
     autoWatch: watchmode,
     browserNoActivityTimeout: timeout,
+    karmaConfig: karmaConfig,
     client: {
       mocha: {
         timeout

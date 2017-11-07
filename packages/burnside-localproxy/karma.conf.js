@@ -6,11 +6,10 @@ var bodyParser = require('body-parser');
 // configure karma with webpack
 module.exports = function webpackConfig(config) {
   config.set({
-    browsers: ['burnside-firefox' ], // , 'burnside-chrome'],
+    browsers: ['burnside-chrome', 'burnside-firefox'],
     browserNoActivityTimeout: 5000,
     singleRun: true, // just run once by default
-    // explicitly list all plugins so we can inject index.js
-    plugins: [
+    plugins: [ // explicitly list all plugins so we can inject our test server and proxy
       testExpressServer,
       burnsideProxy,
       'karma-*'
@@ -21,7 +20,8 @@ module.exports = function webpackConfig(config) {
       { pattern: 'resources/**/*', watched: true, included: false, served: true }
     ],
     preprocessors: {
-      'src/**/*.js': ['webpack', 'sourcemap' ]
+      'src/**/*.test.js': ['webpack', 'sourcemap' ],
+      'resources/**/*.js': ['webpack', 'sourcemap' ]
     },
     reporters: [ 'mocha', 'html', 'junit' ], // report results in this format
     mochaReporter: {
@@ -32,7 +32,6 @@ module.exports = function webpackConfig(config) {
       reporters: [
         { type: 'text'},
         { type: 'lcov', subdir: '.'},
-        { type: 'json', subdir: '.'},
         { type: 'json-summary', subdir: '.'},
         { type: 'text', subdir: '.', file: 'lcov.info' }
       ]

@@ -1,0 +1,9 @@
+{
+  "replaceImages": "./kitten.jpg",
+  "response": {
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+  "methods": ["GET", "OPTIONS", "POST"]
+}

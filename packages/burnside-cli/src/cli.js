@@ -6,6 +6,7 @@ const argv = require('yargs')
   .alias('t', 'timeout')
   .alias('s', 'startup')
   .alias('c', 'condition')
+  .alias('k', 'karmaConfig')
   .argv;
 
 const main = require('./index.js');
@@ -33,11 +34,11 @@ const start = (startup, condition, timeout) => {
         clearTimeout(timer);
       }
       log('Process Startup Complete');
-      return main(argv).then(function karmaExitCode(code) {
+      return main(argv).then(function karmaExitCode() {
         log('Attempting to Safely Kill Startup Process');
-        return server.safeKill().then(() => {
-          process.exit(code); // eslint-disable-line
-        });
+        try {
+          return server.safeKill().then(process.exit.bind(this, [0]));
+        } finally { } // eslint-disable-line
       });
     }).catch(err => {
       if (timer) {
