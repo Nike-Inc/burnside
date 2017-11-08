@@ -104,7 +104,7 @@ Burnside runs your application inside an iframe and uses iframe messaging to com
 
 ![overview.png](overview.png)
 
-<a name="tutorial">
+<a name="tutorial"></a>
 ## Tutorial Setup Instructions
 
 The Burnside tutorial is a set of exercises designed to walk you through how to use Burnside properly and to give you some pointers in the process. To run it, you need to clone the repository and install it's dependencies.
