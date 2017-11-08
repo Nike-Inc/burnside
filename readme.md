@@ -29,8 +29,8 @@ Burnside's CLI supports the following flags:
 
 | Option | Example | Purpose |
 | ------ | ------- | ------- |
-| `<default>` | `./path/to/tests.js` | Your Test File |
-| `startup` | `--startup='./exampleServer.sh'` | A BASH Command representing your application's startup command |
+| `<default>` | `./path/to/tests.js` | Your Test File. Webpack is built in so use `require` for more files. |
+| `startup` | `--startup='./exampleServer.sh'` | An _optional_ startup command for your application. |
 | `condition` | `--condition='startup'` | An _optional_ startup message for Burnside to wait on |
 | `wait` | `--wait=500` | The amount of time Burnside will wait for the `startup` `condition` to be reached, if specified. Defaults to 5000 |
 | `browsers` | `--browsers=chrome,firefox` | The browsers Burnside should attempt to use when testing. You're responsible for making sure they are installed and configured. Available: `chrome` and `firefox` |
