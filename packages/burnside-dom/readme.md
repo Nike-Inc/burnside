@@ -29,12 +29,12 @@ Burnside's CLI supports the following flags:
 
 | Option | Example | Purpose |
 | ------ | ------- | ------- |
-| `<default>` | `./path/to/tests.js` | Your Test File |
-| `startup` | `--startup='./exampleServer.sh'` | A BASH Command representing your application's startup command |
+| `<default>` | `./path/to/tests.js` | Your Test File. Webpack is built in so use `require` for more files. |
+| `startup` | `--startup='./exampleServer.sh'` | An _optional_ startup command for your application. |
 | `condition` | `--condition='startup'` | An _optional_ startup message for Burnside to wait on |
 | `wait` | `--wait=500` | The amount of time Burnside will wait for the `startup` `condition` to be reached, if specified. Defaults to 5000 |
 | `browsers` | `--browsers=chrome,firefox` | The browsers Burnside should attempt to use when testing. You're responsible for making sure they are installed and configured. Available: `chrome` and `firefox` |
-| `karmaConfig` | `--karmaConfig=./burnside.karma.conf.js` | A relative path to an optional Karma configuration. You can use this to override settings, inject Karma plugins, and configure them while also allowing Burnside to add in its own [required Karma configuration](https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/packages/burnside-cli/karma.conf.js) to be layered on afterward. For more information visit on how to work with Karma, visit its [Documentation](https://karma-runner.github.io/1.0/config/configuration-file.html) |
+| `karmaConfig` | `--karmaConfig=./burnside.karma.conf.js` | A relative path to an optional Karma configuration. You can use this to override settings, inject Karma plugins, and configure them while also allowing Burnside to add in its own [required Karma configuration](https://github.com/Nike-Inc/burnside/tree/master/packages/burnside-cli/karma.conf.js) to be layered on afterward. For more information visit on how to work with Karma, visit its [Documentation](https://karma-runner.github.io/1.0/config/configuration-file.html) |
 
 Burnside is a modular ecosystem based on a core that runs inside of a Browser. The CLI bundles Karma and Webpack to load your tests within Chrome, but you can use Burnside's core with any Test Runner you'd like to set up.
 > If you'd like to configure your own test runner, we've included a [Sample project](https://github.com/Nike-Inc/burnside/tree/master/packages/burnside-sample) configured to use Karma and Webpack directly.
@@ -117,7 +117,7 @@ cd burnside
 npm install && npm run custom-install
 npm run tutorial
 ```
-Now you're all configured! If you'd like to contribute to the Tutorial, please read our [Tutorial Developers Guide](https://bitbucket.nike.com/projects/WEBCD/repos/burnside/browse/docs/tutorial.md)
+Now you're all configured! If you'd like to contribute to the Tutorial, please read our [Tutorial Developers Guide](https://github.com/Nike-Inc/burnside/blob/master/docs/tutorial.md)
 
 ## License
 
