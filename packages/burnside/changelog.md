@@ -3,6 +3,10 @@ Details on how to contribute to this changelog see the website
 [Keep a change Log.](http://keepachangelog.com/) All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.2]
+### Changed
+- Replaces Unix `rm -rf` with the rmraf module for Windows development
+
 ## [0.3.1]
 ### Changed
 - Updates the package.json description

@@ -1,6 +1,6 @@
 {
   "name": "burnside",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Fast and Reliable E2E Web Testing. Core Clientside Library.",
   "repository": {
     "type": "github",
@@ -14,7 +14,7 @@
   "main": "lib/index.js",
   "engines": {},
   "scripts": {
-    "clean": "rm -rf lib",
+    "clean": "rimraf lib",
     "babel": "babel src --out-dir lib --source-maps inline",
     "prepublish": "npm run clean && npm run babel",
     "check-coverage": "istanbul check-coverage reports/coverage/coverage-final.json",
@@ -65,6 +65,7 @@
     "mocha": "^3.2.0",
     "opener": "^1.4.1",
     "proxyquire": "^1.7.10",
+    "rimraf": "^2.6.2",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1"

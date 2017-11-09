@@ -1,6 +1,6 @@
 {
   "name": "burnside-dom",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "DOM Extensions for Burnside's Clientside Testing Library",
   "repository": {
     "type": "bitbucket",
@@ -13,7 +13,7 @@
   "license": "UNLICENSED",
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf lib",
+    "clean": "rimraf lib",
     "babel": "babel src --out-dir lib --source-maps inline",
     "prepublish": "npm run clean && npm run babel",
     "check-coverage": "istanbul check-coverage reports/coverage/coverage-final.json",
@@ -60,6 +60,7 @@
     "mocha": "^3.2.0",
     "opener": "^1.4.1",
     "proxyquire": "^1.7.10",
+    "rimraf": "^2.6.2",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1"

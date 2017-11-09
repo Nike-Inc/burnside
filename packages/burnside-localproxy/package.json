@@ -1,6 +1,6 @@
 {
   "name": "burnside-localproxy",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Node HTTP Proxy that injects the Burnside Client",
   "repository": {
     "type": "github",
@@ -11,7 +11,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf lib",
+    "clean": "rimraf lib",
     "babel": "babel src --out-dir lib --source-maps inline",
     "prepublish": "npm run clean && npm run babel",
     "karma": "karma start",
@@ -62,6 +62,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^3.2.0",
     "opener": "^1.4.1",
+    "rimraf": "^2.6.2",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1"
