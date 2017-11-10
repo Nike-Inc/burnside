@@ -1,8 +1,8 @@
 ## Burnside
 
-> Test your entire app, end to end, in pure Javascript
+> Test your entire app, end to end, in pure JavaScript
 
-Burnside is an easy to use, modular, and extendable End to End (E2E) testing tool. Burnside leverages the flexibility of Javascript and the power of modern Browser APIs to inject logic and scripting into your website, without the slowdown of networking for every individual command.
+Burnside is an easy to use, modular, and extendable End to End (E2E) testing tool. Burnside leverages the flexibility of JavaScript and the power of modern Browser APIs to inject logic and scripting into your website, without the slowdown of networking for every individual command.
 
 > Looking for something more hands on? Check out Burnside's interactive, [Test-Driven Tutorial!](#tutorial)
 
@@ -107,7 +107,7 @@ Burnside runs your application inside an iframe and uses iframe messaging to com
 <a name="tutorial"></a>
 ## Tutorial Setup Instructions
 
-The Burnside tutorial is a set of exercises designed to walk you through how to use Burnside properly and to give you some pointers in the process. To run it, you need to clone the repository and install it's dependencies.
+The Burnside tutorial is a set of exercises designed to walk you through how to use Burnside properly and to give you some pointers in the process. To run it, you need to clone the repository and install its dependencies.
 
 > System requirements: Node Runtime Installed Matching the `package.json` specifications
 ```
