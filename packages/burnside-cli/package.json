@@ -1,6 +1,6 @@
 {
   "name": "burnside-cli",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "End To End Web Testing with no dependencies built on pure Node. CLI",
   "repository": {
     "type": "github",

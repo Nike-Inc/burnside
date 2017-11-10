@@ -2,6 +2,15 @@
 Details on how to contribute to this changelog see the website
 [Keep a change Log.](http://keepachangelog.com/) All notable changes to this project will be documented in this file.
 
+## [0.3.2]
+# Changed
+- Updates the tutorial script for windows users.
+- Flags burnside-root as private to prevent publishing the empty monorepo root
+
+## [0.3.1]
+# Changed
+- OSS
+
 ## [0.3.0]
 # Changed
 - Removes burnside-analytics
