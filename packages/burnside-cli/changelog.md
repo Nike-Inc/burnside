@@ -3,6 +3,10 @@ Details on how to contribute to this changelog see the website
 [Keep a change Log.](http://keepachangelog.com/) All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.4]
+### Added
+Fixes broken link pointing to deleted cli sample project in the tutorial
+
 ## [0.3.3]
 ### Added
 Support for custom karma configurations and sample usage.

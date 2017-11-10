@@ -113,9 +113,7 @@ The Burnside tutorial is a set of exercises designed to walk you through how to 
 ```
 git clone https://github.com/Nike-Inc/burnside.git
 
-cd burnside
-npm install && npm run custom-install
-npm run tutorial
+cd burnside && npm run tutorial
 ```
 Now you're all configured! If you'd like to contribute to the Tutorial, please read our [Tutorial Developers Guide](https://github.com/Nike-Inc/burnside/blob/master/docs/tutorial.md)
 
