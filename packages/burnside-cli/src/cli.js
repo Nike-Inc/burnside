@@ -14,7 +14,7 @@ const main = require('./index.js');
 const prefix = '[Burnside]: ';
 
 process.env.trace = Boolean(argv.verbose);
-const log = argv.verbose ? str => console.info(prefix + str) : () => {}; // eslint-disable-line
+const log = argv.verbose ? str => console.info(prefix + str) : () => {}; // eslint-disable-line no-console
 
 const start = (startup, condition, timeout) => {
   if (startup) {

@@ -19,7 +19,7 @@ const defaultOptions = {
   key: certPath + '/localhost.privkey.pem',
   cert: certPath + '/localhost.cert.pem',
   replaceImages: false,
-  trace: false || process.env.trace,
+  trace: process.env.trace,
   injects: [],
   extensions: [burnsideDOM],
   request: {},
