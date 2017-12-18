@@ -70,26 +70,24 @@ Burnside's proxy is configured via a `.burnside-localproxyrc` at the root of you
 
 ```js
 {
-  "burnside-localproxy": {
-    "key": "./certs/localhost.privkey.pem", // the key and certificate to use for SSL decryption
-    "cert": "./certs/localhost.cert.pem",
-    "port": 9888, // the port you want the Proxy to run on
-    "extensions": [  // an array of names of Extensions for Burnside to use when injecting the client
-      "burnside-dom"
-    ]
-    "replaceImages": true,  // enables a feature that replaces all images with a default for faster testing (also accepts an image filepath e.g. "./path/to/my/image.png" )
-    "injects": [ // an array of urls mapped into injected javascript tags
-      "https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"
-    ],
-    "request": { // headers to (over)write on outbound network requests
-      "headers": {
-        "secret-custom-header": "<SHARED-SECRET>"
-      }
-    },
-    "response": { // headers to (over)write on network request responses
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
+  "key": "./certs/localhost.privkey.pem", // the key and certificate to use for SSL decryption
+  "cert": "./certs/localhost.cert.pem",
+  "port": 9888, // the port you want the Proxy to run on
+  "extensions": [  // an array of names of Extensions for Burnside to use when injecting the client
+    "burnside-dom"
+  ]
+  "replaceImages": true,  // enables a feature that replaces all images with a default for faster testing (also accepts an image filepath e.g. "./path/to/my/image.png" )
+  "injects": [ // an array of urls mapped into injected javascript tags
+    "https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"
+  ],
+  "request": { // headers to (over)write on outbound network requests
+    "headers": {
+      "secret-custom-header": "<SHARED-SECRET>"
+    }
+  },
+  "response": { // headers to (over)write on network request responses
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
     }
   }
 }

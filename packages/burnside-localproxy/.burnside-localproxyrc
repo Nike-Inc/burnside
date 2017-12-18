@@ -3,6 +3,7 @@
   "cert": "./certs/localhost.cert.pem",
   "port": 9888,
   "replaceImages": true, 
+  "trace": true,
   "extensions": [
     "burnside-dom"
   ],

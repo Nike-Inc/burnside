@@ -7,16 +7,14 @@ const argv = require('yargs')
   .alias('s', 'startup')
   .alias('c', 'condition')
   .alias('k', 'karmaConfig')
+  .alias('v', 'verbose')
   .argv;
 
 const main = require('./index.js');
 const prefix = '[Burnside]: ';
-const v = argv.verbose || false;
-const log = str => {
-  if (v) {
-    console.info(prefix + str); // eslint-disable-line
-  }
-};
+
+process.env.trace = Boolean(argv.verbose);
+const log = argv.verbose ? str => console.info(prefix + str) : () => {}; // eslint-disable-line
 
 const start = (startup, condition, timeout) => {
   if (startup) {

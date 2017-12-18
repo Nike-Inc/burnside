@@ -1,6 +1,6 @@
 {
   "name": "burnside-cli",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "End To End Web Testing with no dependencies built on pure Node. CLI",
   "repository": {
     "type": "github",
@@ -27,7 +27,7 @@
   "dependencies": {
     "burnside": "~0.3.0",
     "burnside-dom": "~0.3.0",
-    "burnside-localproxy": "~0.3.0",
+    "burnside-localproxy": "~0.3.4",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",

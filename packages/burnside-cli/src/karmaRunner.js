@@ -35,6 +35,7 @@ module.exports = function runKarma(karmaConfigPath, bundle, options) {
 
       const karmaConfig = karma.config.parseConfig(path.resolve(karmaConfigPath), config);
 
+      karmaConfig.logLevel = options.verbose ? 'DEBUG' : karmaConfig.logLevel;
       karmaConfig.plugins = catArr(karmaConfig.plugins, configPlugins);
       karmaConfig.frameworks = catArr(karmaConfig.frameworks, configFrameworks);
       karmaConfig.reporters = catArr(karmaConfig.reporters, configReporters);
