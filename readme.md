@@ -27,14 +27,22 @@ $ npm install --save-dev burnside-cli
 ### Command Line Options
 Burnside's CLI supports the following flags:
 
-| Option | Example | Purpose |
+.alias('b', 'browsers')
+  .alias('t', 'timeout')
+  .alias('s', 'startup')
+  .alias('c', 'condition')
+  .alias('k', 'karmaConfig')
+  .alias('v', 'verbose')
+
+| Options | Example | Purpose |
 | ------ | ------- | ------- |
 | `<default>` | `./path/to/tests.js` | Your Test File. Webpack is built in so use `require` for more files. |
-| `startup` | `--startup='./exampleServer.sh'` | An _optional_ startup command for your application. |
-| `condition` | `--condition='startup'` | An _optional_ startup message for Burnside to wait on |
-| `wait` | `--wait=500` | The amount of time Burnside will wait for the `startup` `condition` to be reached, if specified. Defaults to 5000 |
-| `browsers` | `--browsers=chrome,firefox` | The browsers Burnside should attempt to use when testing. You're responsible for making sure they are installed and configured. Available: `chrome` and `firefox` |
-| `karmaConfig` | `--karmaConfig=./burnside.karma.conf.js` | A relative path to an optional Karma configuration. You can use this to override settings, inject Karma plugins, and configure them while also allowing Burnside to add in its own [required Karma configuration](https://github.com/Nike-Inc/burnside/tree/master/packages/burnside-cli/karma.conf.js) to be layered on afterward. For more information visit on how to work with Karma, visit its [Documentation](https://karma-runner.github.io/1.0/config/configuration-file.html) |
+| `--verbose` `-v` | `--verbose` | Turns up logging and adds request tracing |
+| `--startup` `-s` | `--startup='./exampleServer.sh'` | An _optional_ startup command for your application. |
+| `--condition` `-c` | `--condition='startup'` | An _optional_ startup message for Burnside to wait on |
+| `--wait` `-w` | `--wait=500` | The amount of time Burnside will wait for the `startup` `condition` to be reached, if specified. Defaults to 5000 |
+| `--browsers` `-b` | `--browsers=chrome,firefox` | The browsers Burnside should attempt to use when testing. You're responsible for making sure they are installed and configured. Available: `chrome` and `firefox` |
+| `--karmaConfig` `-k` | `--karmaConfig=./burnside.karma.conf.js` | A relative path to an optional Karma configuration. You can use this to override settings, inject Karma plugins, and configure them while also allowing Burnside to add in its own [required Karma configuration](https://github.com/Nike-Inc/burnside/tree/master/packages/burnside-cli/karma.conf.js) to be layered on afterward. For more information visit on how to work with Karma, visit its [Documentation](https://karma-runner.github.io/1.0/config/configuration-file.html) |
 
 Burnside is a modular ecosystem based on a core that runs inside of a Browser. The CLI bundles Karma and Webpack to load your tests within Chrome, but you can use Burnside's core with any Test Runner you'd like to set up.
 > If you'd like to configure your own test runner, we've included a [Sample project](https://github.com/Nike-Inc/burnside/tree/master/packages/burnside-sample) configured to use Karma and Webpack directly.
@@ -70,26 +78,24 @@ Burnside's proxy is configured via a `.burnside-localproxyrc` at the root of you
 
 ```js
 {
-  "burnside-localproxy": {
-    "key": "./certs/localhost.privkey.pem", // the key and certificate to use for SSL decryption
-    "cert": "./certs/localhost.cert.pem",
-    "port": 9888, // the port you want the Proxy to run on
-    "extensions": [  // an array of names of Extensions for Burnside to use when injecting the client
-      "burnside-dom"
-    ]
-    "replaceImages": true,  // enables a feature that replaces all images with a default for faster testing (also accepts an image filepath e.g. "./path/to/my/image.png" )
-    "injects": [ // an array of urls mapped into injected javascript tags
-      "https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"
-    ],
-    "request": { // headers to (over)write on outbound network requests
-      "headers": {
-        "secret-custom-header": "<SHARED-SECRET>"
-      }
-    },
-    "response": { // headers to (over)write on network request responses
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
+  "key": "./certs/localhost.privkey.pem", // the key and certificate to use for SSL decryption
+  "cert": "./certs/localhost.cert.pem",
+  "port": 9888, // the port you want the Proxy to run on
+  "extensions": [  // an array of names of Extensions for Burnside to use when injecting the client
+    "burnside-dom"
+  ]
+  "replaceImages": true,  // enables a feature that replaces all images with a default for faster testing (also accepts an image filepath e.g. "./path/to/my/image.png" )
+  "injects": [ // an array of urls mapped into injected javascript tags
+    "https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"
+  ],
+  "request": { // headers to (over)write on outbound network requests
+    "headers": {
+      "secret-custom-header": "<SHARED-SECRET>"
+    }
+  },
+  "response": { // headers to (over)write on network request responses
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
     }
   }
 }

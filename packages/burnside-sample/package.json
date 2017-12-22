@@ -9,7 +9,7 @@
   },
   "scripts": {
     "prepublish": "echo 'nothing to see here'",
-    "burnside": "burnside ./src/index.test.js",
+    "burnside": "burnside ./src/index.test.js --verbose",
     "burnside:watch": "FOO=bar burnside ./src/index.test.js --watchmode --karmaConfig=./burnside.karma.conf.js",
     "lint:json": "eslint --format json src/**/*.js > eslint.json",
     "lint": "eslint --color 'src/**/*.js'",
@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "burnside-cli": "~0.3.2",
+    "burnside-cli": "~0.3.5",
     "babel-eslint": "^7.2.3",
     "chai": "^4.0.2",
     "eslint": "^3.9.1",

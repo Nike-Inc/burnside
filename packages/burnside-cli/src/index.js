@@ -10,6 +10,7 @@ module.exports = function main(args) {
   const timeout = Boolean(args.timeout) && args.timeout > 0 ? args.timeout : c.defaultTimeout;
 
   const options = {
+    verbose: args.verbose,
     singleRun: !watchmode,
     browsers: parseBrowsers(browserOpts),
     autoWatch: watchmode,

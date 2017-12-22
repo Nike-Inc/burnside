@@ -19,6 +19,7 @@ const defaultOptions = {
   key: certPath + '/localhost.privkey.pem',
   cert: certPath + '/localhost.cert.pem',
   replaceImages: false,
+  trace: process.env.trace,
   injects: [],
   extensions: [burnsideDOM],
   request: {},
@@ -109,6 +110,14 @@ function init(opts, log) {
     Object.assign(req.headers, requestHeaders);
   });
 
+  if (opts.trace) {
+    proxy.intercept({
+      phase: 'response'
+    }, function trace(req) {
+      log.debug('Tracing Resource Request: ', req.hostname + req.url);
+    });
+  }
+
   // clean CORS headers and inject the wrapped Client during the response phase
   proxy.intercept({
     phase: 'response',
@@ -126,7 +135,6 @@ function init(opts, log) {
       } else {
         resp.string = `${clientStr}${resp.string}`;
       }
-      log.debug('Proxy Intercepted: ', req.url);
     }
 
     const responseHeaders = opts.response.headers || {};
